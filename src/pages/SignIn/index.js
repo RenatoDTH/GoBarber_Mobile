@@ -1,22 +1,44 @@
 import React from 'react';
-import { Text, StatusBar } from 'react-native';
-import Background from '~/pages/components/Background';
-import Input from '~/pages/components/Input';
-import Button from '~/pages/components/Button';
+import { Image, StatusBar } from 'react-native';
+import Logo from '~/assets/logo.png';
 
-// import { Container } from './styles';
+import Background from '~/pages/components/Background';
+
+import {
+  Container,
+  Form,
+  FormInput,
+  SubmitButton,
+  SignLink,
+  SignLinkText,
+} from './styles';
 
 const SignIn = () => {
   return (
     <Background>
       <StatusBar translucent backgroundColor="transparent" />
-      <Text> Hello World </Text>
-      <Input
-        style={{ marginTop: 30 }}
-        icon="call"
-        placeholder="Digite o seu nome"
-      />
-      <Button>Entrar</Button>
+      <Container>
+        <Image source={Logo} />
+        <Form>
+          <FormInput
+            icon="mail-outline"
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Digite seu e-mail"
+          />
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Sua senha secreta"
+          />
+          <SubmitButton onPress={() => {}}>Acessar</SubmitButton>
+        </Form>
+
+        <SignLink onPress={() => {}}>
+          <SignLinkText>Criar conta gratuita</SignLinkText>
+        </SignLink>
+      </Container>
     </Background>
   );
 };
