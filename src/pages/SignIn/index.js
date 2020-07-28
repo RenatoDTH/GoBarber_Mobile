@@ -1,13 +1,15 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, StatusBar } from 'react-native';
+import Background from '~/pages/components/Background';
 
 // import { Container } from './styles';
 
 const SignIn = () => {
   return (
-    <View>
+    <Background>
+      <StatusBar translucent backgroundColor="transparent" />
       <Text> Hello World </Text>
-    </View>
+    </Background>
   );
 };
 
