@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StatusBar } from 'react-native';
+import { Image } from 'react-native';
 import Logo from '~/assets/logo.png';
 
 import Background from '~/pages/components/Background';
@@ -16,7 +16,6 @@ import {
 const SignUp = ({ navigation }) => {
   return (
     <Background>
-      <StatusBar translucent backgroundColor="transparent" />
       <Container>
         <Image source={Logo} />
         <Form>
