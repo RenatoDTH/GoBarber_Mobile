@@ -1,13 +1,54 @@
 import React from 'react';
-import { Text, StatusBar } from 'react-native';
-import Background from '~/pages/components/Background';
-// import { Container } from './styles';
+import { Image, StatusBar } from 'react-native';
+import Logo from '~/assets/logo.png';
 
-const SignUp = () => {
+import Background from '~/pages/components/Background';
+
+import {
+  Container,
+  Form,
+  FormInput,
+  SubmitButton,
+  SignLink,
+  SignLinkText,
+} from './styles';
+
+const SignUp = ({ navigation }) => {
   return (
     <Background>
       <StatusBar translucent backgroundColor="transparent" />
-      <Text>SignUp</Text>
+      <Container>
+        <Image source={Logo} />
+        <Form>
+          <FormInput
+            icon="person-outline"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Nome Completo"
+          />
+          <FormInput
+            icon="mail-outline"
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Digite seu e-mail"
+          />
+          <FormInput
+            icon="lock-outline"
+            secureTextEntry
+            placeholder="Sua senha secreta"
+          />
+          <SubmitButton onPress={() => {}}>Cadastrar</SubmitButton>
+        </Form>
+
+        <SignLink
+          onPress={() => {
+            navigation.navigate('SignIn');
+          }}
+        >
+          <SignLinkText>Já possuo conta</SignLinkText>
+        </SignLink>
+      </Container>
     </Background>
   );
 };
