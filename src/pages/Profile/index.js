@@ -4,12 +4,12 @@ import { Text } from 'react-native';
 import Background from '~/pages/components/Background/index';
 import { Container } from './styles';
 
-const Dashboard = () => {
+const Profile = () => {
   return (
     <Background>
-      <Text> Hello World</Text>
+      <Text> Profile </Text>
     </Background>
   );
 };
 
-export default Dashboard;
+export default Profile;
