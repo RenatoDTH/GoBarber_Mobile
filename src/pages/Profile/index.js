@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Background from '~/pages/components/Background/index';
 import { updateProfileRequest } from '~/store/modules/user/actions';
+import { signOut } from '~/store/modules/auth/actions';
+
 import {
   Container,
   Title,
@@ -10,6 +12,7 @@ import {
   FormInput,
   Seperator,
   SubmitButton,
+  LogoutButton,
 } from './styles';
 
 const Profile = () => {
@@ -37,6 +40,10 @@ const Profile = () => {
         confirmPassword,
       })
     );
+  }
+
+  function handleLogout() {
+    dispatch(signOut());
   }
 
   useEffect(() => {
@@ -108,6 +115,7 @@ const Profile = () => {
           />
 
           <SubmitButton onPress={handleSubmit}> Atualizar perfil</SubmitButton>
+          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
         </Form>
       </Container>
     </Background>
