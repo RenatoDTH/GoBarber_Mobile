@@ -37,23 +37,40 @@ const New = ({ navigation }) => (
         marginTop: 12,
       },
       headerTitleStyle: { marginTop: 10 },
-      headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Dashboard');
-          }}
-        >
-          <Icon name="chevron-left" size={20} color="#FFF" />
-        </TouchableOpacity>
-      ),
     }}
   >
     <AuthStack.Screen
       name="SelectProvider"
       component={SelectProvider}
-      options={{ title: 'Selecione o prestador' }}
+      options={{
+        title: 'Selecione o prestador',
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Dashboard');
+            }}
+          >
+            <Icon name="chevron-left" size={20} color="#FFF" />
+          </TouchableOpacity>
+        ),
+      }}
     />
-    <AuthStack.Screen name="SelectDateTime" component={SelectDateTime} />
+    <AuthStack.Screen
+      name="SelectDateTime"
+      component={SelectDateTime}
+      options={{
+        title: 'Selecione o horário',
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SelectProvider');
+            }}
+          >
+            <Icon name="chevron-left" size={20} color="#FFF" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
     <AuthStack.Screen name="Confirm" component={Confirm} />
   </AuthStack.Navigator>
 );
