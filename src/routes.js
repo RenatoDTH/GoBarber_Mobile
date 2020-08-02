@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,6 +10,9 @@ import SignIn from '~/pages/SignIn/index';
 import SignUp from '~/pages/SignUp/index';
 import Dashboard from '~/pages/Dashboard/index';
 import Profile from '~/pages/Profile/index';
+import SelectProvider from '~/pages/New/SelectProvider/index';
+import SelectDateTime from '~/pages/New/SelectDateTime/index';
+import Confirm from '~/pages/New/Confirm/index';
 
 const AuthStack = createStackNavigator();
 const AuthStackScreen = () => (
@@ -19,6 +23,38 @@ const AuthStackScreen = () => (
   >
     <AuthStack.Screen name="SignIn" component={SignIn} />
     <AuthStack.Screen name="SignUp" component={SignUp} />
+  </AuthStack.Navigator>
+);
+
+const New = ({ navigation }) => (
+  <AuthStack.Navigator
+    screenOptions={{
+      headerTitleAlign: 'center',
+      headerTransparent: true,
+      headerTintColor: '#FFF',
+      headerLeftContainerStyle: {
+        marginLeft: 20,
+        marginTop: 12,
+      },
+      headerTitleStyle: { marginTop: 10 },
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Dashboard');
+          }}
+        >
+          <Icon name="chevron-left" size={20} color="#FFF" />
+        </TouchableOpacity>
+      ),
+    }}
+  >
+    <AuthStack.Screen
+      name="SelectProvider"
+      component={SelectProvider}
+      options={{ title: 'Selecione o prestador' }}
+    />
+    <AuthStack.Screen name="SelectDateTime" component={SelectDateTime} />
+    <AuthStack.Screen name="Confirm" component={Confirm} />
   </AuthStack.Navigator>
 );
 
@@ -48,6 +84,17 @@ const AppStackScreen = () => (
         tabBarLabel: 'Agendamento',
         tabBarIcon: ({ color, size }) => (
           <Icon name="event" color={color} size={size} />
+        ),
+      }}
+    />
+    <AppStack.Screen
+      name="New"
+      component={New}
+      options={{
+        tabBarLabel: 'Agendar',
+        tabBarVisible: false,
+        tabBarIcon: ({ color, size }) => (
+          <Icon name="add-circle-outline" color={color} size={size} />
         ),
       }}
     />
