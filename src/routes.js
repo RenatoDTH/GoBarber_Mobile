@@ -71,7 +71,22 @@ const New = ({ navigation }) => (
         ),
       }}
     />
-    <AuthStack.Screen name="Confirm" component={Confirm} />
+    <AuthStack.Screen
+      name="Confirm"
+      component={Confirm}
+      options={{
+        title: 'Confirmar agendamento',
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SelectDateTime');
+            }}
+          >
+            <Icon name="chevron-left" size={20} color="#FFF" />
+          </TouchableOpacity>
+        ),
+      }}
+    />
   </AuthStack.Navigator>
 );
 
