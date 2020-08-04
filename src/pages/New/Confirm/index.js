@@ -22,11 +22,13 @@ const Confirm = ({ route, navigation }) => {
       date: time,
     });
 
-    navigation.navigate('Dashboard');
+    // navigation.navigate('Dashboard');
+
+    navigation.reset({
+      routes: [{ name: 'Dashboard' }],
+    });
   }
 
-  console.tron.log(provider);
-  console.tron.log(time);
   return (
     <Background>
       <Container>

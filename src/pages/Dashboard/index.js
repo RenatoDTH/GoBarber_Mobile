@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { withNavigationFocus } from '@react-navigation/compat';
 import api from '~/services/api';
 import Appointment from '~/pages/components/Appointment/index';
 import Background from '~/pages/components/Background/index';
 import { Container, Title, List } from './styles';
 
-const Dashboard = () => {
+const Dashboard = ({ isFocused }) => {
   const [appointments, setAppointments] = useState();
+  async function loadAppointments() {
+    const response = await api.get('appointments');
+
+    setAppointments(response.data);
+  }
 
   useEffect(() => {
-    async function loadAppointments() {
-      const response = await api.get('appointments');
-
-      setAppointments(response.data);
+    if (isFocused) {
+      loadAppointments();
     }
-
-    loadAppointments();
-  }, []);
+  }, [isFocused]);
 
   async function handleCancel(id) {
     const response = await api.delete(`appointments/${id}`);
@@ -49,4 +51,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default withNavigationFocus(Dashboard);
